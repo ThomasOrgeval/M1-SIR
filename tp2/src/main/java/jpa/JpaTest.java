@@ -1,13 +1,12 @@
 package jpa;
 
-import test.testjpa.domain.Department;
-import test.testjpa.domain.Employee;
+import jpa.object.Card;
+import jpa.object.CardType;
+import jpa.object.Kanban;
+import jpa.object.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaTest {
     private final EntityManager manager;
@@ -17,14 +16,12 @@ public class JpaTest {
     }
 
     public static void main(String[] args) {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("example");
-        EntityManager manager = factory.createEntityManager();
+        EntityManager manager = EntityManagerHelper.getEntityManager();
         JpaTest test = new JpaTest(manager);
-
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
         try {
-            test.createEmployees();
+            test.createKanban();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -33,24 +30,19 @@ public class JpaTest {
 
         manager.close();
         EntityManagerHelper.closeEntityManagerFactory();
-        factory.close();
     }
 
-    private void createEmployees() {
-        int numOfEmployees = manager.createQuery("Select a From Employee a", Employee.class).getResultList().size();
-        if (numOfEmployees == 0) {
-            Department department = new Department("java");
-            manager.persist(department);
+    private void createKanban() {
+        if (manager.createQuery("Select a From User a", User.class).getResultList().size() == 0) {
+            User user = new User("Orgeval");
+            manager.persist(user);
+            manager.persist(new Kanban(user, "monKanban"));
+            manager.persist(new Card(CardType.DONE, "DONE tp 2"));
 
-            manager.persist(new Employee("Jakab Gipsz",department));
-            manager.persist(new Employee("Captain Nemo",department));
+            Card card = new Card(CardType.TODO, "TODO tp 10");
+            card.setUser(user);
+            manager.persist(card);
         }
-    }
 
-    private void listEmployees() {
-        List<Employee> resultList = manager.createQuery("Select a From Employee a", Employee.class).getResultList();
-        System.out.println("num of employess:" + resultList.size());
-        for (Employee next : resultList)
-            System.out.println("next employee: " + next);
     }
 }
