@@ -36,12 +36,16 @@ public class JpaTest {
         if (manager.createQuery("Select a From User a", User.class).getResultList().size() == 0) {
             User user = new User("Orgeval");
             manager.persist(user);
-            manager.persist(new Kanban(user, "monKanban"));
-            manager.persist(new Card(CardType.DONE, "DONE tp 2"));
+            Kanban kanban = new Kanban(user, "monKanban");
+            Card card1 = new Card(CardType.DONE, "tp 2");
+            kanban.addCard(card1);
+            Card card2 = new Card(CardType.TODO, "tp 10");
+            card2.setUser(user);
+            kanban.addCard(card2);
 
-            Card card = new Card(CardType.TODO, "TODO tp 10");
-            card.setUser(user);
-            manager.persist(card);
+            manager.persist(kanban);
+            manager.persist(card1);
+            manager.persist(card2);
         }
 
     }
