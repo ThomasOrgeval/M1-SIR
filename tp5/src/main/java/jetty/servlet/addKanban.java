@@ -12,5 +12,6 @@ import java.io.IOException;
 public class addKanban extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         KanbanDao.addKanban(new jetty.model.Kanban(KanbanDao.getLastId() + 1, request.getParameter("kanban"), Integer.parseInt(request.getParameter("user"))));
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/kanban"));
     }
 }

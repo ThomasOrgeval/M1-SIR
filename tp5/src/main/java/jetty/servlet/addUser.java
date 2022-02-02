@@ -13,5 +13,6 @@ import java.io.IOException;
 public class addUser extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         UserDao.addUser(new User(UserDao.getLastId() + 1, request.getParameter("name")));
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/kanban"));
     }
 }

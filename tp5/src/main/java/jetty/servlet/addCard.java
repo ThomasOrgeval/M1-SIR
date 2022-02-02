@@ -15,5 +15,6 @@ public class addCard extends HttpServlet {
         CardDao.addCard(new Card(CardDao.getLastId() + 1, request.getParameter("end"), Integer.parseInt(request.getParameter("estimated")),
                 request.getParameter("name"), request.getParameter("note"), request.getParameter("place"), request.getParameter("type"),
                 request.getParameter("url"), Integer.parseInt(request.getParameter("user")), Integer.parseInt(request.getParameter("kanban"))));
+        response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/kanban"));
     }
 }
