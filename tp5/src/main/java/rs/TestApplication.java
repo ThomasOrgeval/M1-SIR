@@ -1,9 +1,7 @@
 package rs;
 
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
-import rs.rest.PetResource;
-import rs.rest.SwaggerResource;
-import rs.rest.UserResource;
+import rs.rest.*;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -19,6 +17,8 @@ public class TestApplication extends Application {
         clazzes.add(OpenApiResource.class);
         clazzes.add(PetResource.class);
         clazzes.add(UserResource.class);
+        clazzes.add(CardResource.class);
+        clazzes.add(KanbanResource.class);
         clazzes.add(SwaggerResource.class);
         return clazzes;
     }

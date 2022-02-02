@@ -1,12 +1,15 @@
 package rs.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Card {
+public class Card implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
@@ -16,11 +19,17 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     @ElementCollection
     @CollectionTable(name = "tags")
     private final List<String> tags = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "kanban_id")
+    @JsonManagedReference
+    private Kanban kanban;
 
     private String name, place, url, note;
     private Date end;
@@ -109,5 +118,13 @@ public class Card {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Kanban getKanban() {
+        return kanban;
+    }
+
+    public void setKanban(Kanban kanban) {
+        this.kanban = kanban;
     }
 }

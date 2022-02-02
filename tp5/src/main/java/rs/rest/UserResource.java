@@ -1,5 +1,7 @@
 package rs.rest;
 
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 import io.swagger.v3.oas.annotations.Parameter;
 import rs.dao.UserDao;
 import rs.domain.User;
@@ -12,14 +14,11 @@ import java.util.List;
 @Path("/user")
 @Produces({"application/json", "application/xml"})
 public class UserResource {
-    UserDao uDao;
-
-    public UserResource() {
-        uDao = new UserDao();
-    }
+    UserDao uDao = new UserDao();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @JacksonFeatures(serializationEnable =  { SerializationFeature.INDENT_OUTPUT })
     public List<User> getUsers()  {
         return uDao.findAll();
     }
@@ -27,6 +26,7 @@ public class UserResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @JacksonFeatures(serializationEnable =  { SerializationFeature.INDENT_OUTPUT })
     public User getUserById(@PathParam("id") long id)  {
         return uDao.findOne(id);
     }

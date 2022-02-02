@@ -1,5 +1,7 @@
 package rs.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Kanban implements Serializable {
 
     @OneToMany
     @JoinColumn(name = "kanban_id")
+    @JsonBackReference
     private final List<Card> cards = new ArrayList<>();
 
     private String kanban;

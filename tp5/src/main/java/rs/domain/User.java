@@ -1,5 +1,7 @@
 package rs.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
@@ -19,6 +21,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     @XmlElementWrapper(name = "cards")
     @XmlElement(name = "cards")
+    @JsonBackReference
     List<Card> cards = new ArrayList<>();
 
     @XmlElement(name = "name")

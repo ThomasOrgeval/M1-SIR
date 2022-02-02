@@ -20,6 +20,10 @@ public class Card {
     @CollectionTable(name = "tags")
     private final List<String> tags = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "kanban_id")
+    private Kanban kanban;
+
     private String name, place, url, note;
     private Date end;
     private int estimated;
@@ -103,5 +107,13 @@ public class Card {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Kanban getKanban() {
+        return kanban;
+    }
+
+    public void setKanban(Kanban kanban) {
+        this.kanban = kanban;
     }
 }
