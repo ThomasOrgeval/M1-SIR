@@ -50,4 +50,21 @@ public class UserDao {
         fermerConnexionBd();
         return user;
     }
+
+    public static int getLastId() {
+        ResultSet reqSelection = ConnectionDB.execReqSelection("select id from user order by id desc limit 1");
+        try {
+            if (reqSelection.next()) return reqSelection.getInt(1);
+        } catch (Exception e) {
+            System.out.println("erreur req - select id from user order by id desc limit 1");
+            e.printStackTrace();
+        }
+        ConnectionDB.fermerConnexionBd();
+        return 0;
+    }
+
+    public static void addUser(User user) {
+        ConnectionDB.execReqMaj("insert into user values('" + user.getId() + "','" + user.getName() + "')");
+        ConnectionDB.fermerConnexionBd();
+    }
 }

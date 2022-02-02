@@ -44,4 +44,23 @@ public class CardDao {
         fermerConnexionBd();
         return cards;
     }
+
+    public static int getLastId() {
+        ResultSet reqSelection = ConnectionDB.execReqSelection("select id from card order by id desc limit 1");
+        try {
+            if (reqSelection.next()) return reqSelection.getInt(1);
+        } catch (Exception e) {
+            System.out.println("erreur req - select id from card order by id desc limit 1");
+            e.printStackTrace();
+        }
+        ConnectionDB.fermerConnexionBd();
+        return 0;
+    }
+
+    public static void addCard(Card c) {
+        ConnectionDB.execReqMaj("insert into card values('" + c.getId() + "','" + c.getEnd() + "','" + c.getEstimated() + "','" +
+                c.getName() + "','" + c.getNote() + "','" + c.getPlace() + "','" + c.getType() + "','" + c.getUrl() + "','" +
+                c.getUser_id() + "','" + c.getKanban_id() + "')");
+        ConnectionDB.fermerConnexionBd();
+    }
 }
