@@ -7,4 +7,12 @@
     <img src="{{detail.sprites.front_default}}" alt="pokemon" width="150">
     <img src="{{detail.sprites.front_shiny}}" alt="pokemon" width="150">
   </div>
+  <div class="d-flex justify-content-between">
+    <div>
+      <p>Base stats</p>
+      <ul class="list-group">
+        <li *ngFor="let item of detail.stats" class="list-group-item">{{item.stat.name}} - {{item.base_stat}}</li>
+      </ul>
+    </div>
+  </div>
 </div>
