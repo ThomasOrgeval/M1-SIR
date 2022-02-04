@@ -1,0 +1,10 @@
+<div class="mt-3 text-center">
+  <p>Le pokemon sélectionné est {{detail.name}}</p>
+  <ul class="list-group">
+    <li *ngFor="let item of detail.abilities" class="list-group-item">{{item.ability.name}}</li>
+  </ul>
+  <div class="d-flex justify-content-center">
+    <img src="{{detail.sprites.front_default}}" alt="pokemon" width="150">
+    <img src="{{detail.sprites.front_shiny}}" alt="pokemon" width="150">
+  </div>
+</div>

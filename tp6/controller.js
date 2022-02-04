@@ -3,7 +3,7 @@ const editingMode = {rect: 0, line: 1}
 function Pencil(ctx, drawing, canvas) {
   this.currEditingMode = editingMode.line
   this.currLineWidth = 5
-  this.currColour = document.getElementById('colour').value
+  this.currColour = $("#colour").val()
   this.currentShape = 0
 
   // Liez ici les widgets à la classe pour modifier les attributs présents ci-dessus.
@@ -20,8 +20,8 @@ function Pencil(ctx, drawing, canvas) {
 
   this.onInteractionEnd = function (x0, y0, x1, y1) {
     const shape = (this.currentShape === editingMode.line ?
-        new Ligne(x0, y0, x1, y1, document.getElementById("spinnerWidth").value, document.getElementById("colour").value) :
-        new Rectangle(x0, y0, x1, y1, document.getElementById("spinnerWidth").value, document.getElementById("colour").value)
+        new Ligne(x0, y0, x1, y1, $("#spinnerWidth").val(), $("#colour").val()) :
+        new Rectangle(x0, y0, x1, y1, $("#spinnerWidth").val(), $("#colour").val())
     )
     drawing.addForm(shape)
     drawing.paint(ctx)

@@ -1,0 +1,24 @@
+<div class="container">
+  <h4>Two way data binding</h4>
+  <div class="md-form">
+    <input [(ngModel)]="id" mdbInput type="text" id="form1" class="form-control">
+    <label for="form1">Mon id</label>
+  </div>
+  <div class="md-form">
+    <input [(ngModel)]="id" mdbInput type="text" id="form2" class="form-control" [readOnly]="id">
+    <label for="form2">Mon id copié</label>
+  </div>
+
+  <h4>Pokemon selector</h4>
+  <select class="browser-default custom-select" [(ngModel)]="pokemon">
+    <option *ngFor="let title of pokemons">{{title.name}}</option>
+  </select>
+  <div class="md-form">
+    <input [(ngModel)]="pokemon" mdbInput type="text" id="form3" class="form-control" [readOnly]="pokemon">
+    <label for="form3">Mon pokemon</label>
+  </div>
+  <button (click)="button()" mdbBtn gradient="aqua" [rounded]="true" [block]="true" mdbWavesEffect>Go !</button>
+  <div *ngIf="pokeDetail">
+    <app-pokedetail [detail]="pokeDetail"></app-pokedetail>
+  </div>
+</div>
