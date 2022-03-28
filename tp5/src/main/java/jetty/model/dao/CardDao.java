@@ -13,7 +13,7 @@ import static jetty.model.dao.ConnectionDB.fermerConnexionBd;
 public class CardDao {
     public static List<Card> getCardByKanban(Kanban kanban) {
         List<Card> cards = new ArrayList<>();
-        ResultSet reqSelection = ConnectionDB.execReqSelection("select * from card where kanban_id = '" + kanban.getId() + "'");
+        ResultSet reqSelection = ConnectionDB.execReqSelection("select * from Card where kanban_id = '" + kanban.getId() + "'");
         try {
             while (reqSelection.next())
                 cards.add(new Card(reqSelection.getInt(1), reqSelection.getString(2), reqSelection.getInt(3),
@@ -21,7 +21,7 @@ public class CardDao {
                         reqSelection.getString(7), reqSelection.getString(8), reqSelection.getInt(9),
                         reqSelection.getInt(10)));
         } catch (Exception e) {
-            System.out.println("erreur req - select * from card where kanban_id = '" + kanban.getId() + "'");
+            System.out.println("erreur req - select * from Card where kanban_id = '" + kanban.getId() + "'");
             e.printStackTrace();
         }
         fermerConnexionBd();
@@ -30,7 +30,7 @@ public class CardDao {
 
     public static List<Card> getCardForUser(User user) {
         List<Card> cards = new ArrayList<>();
-        ResultSet reqSelection = ConnectionDB.execReqSelection("select * from card where user_id = '" + user.getId() + "'");
+        ResultSet reqSelection = ConnectionDB.execReqSelection("select * from Card where user_id = '" + user.getId() + "'");
         try {
             while (reqSelection.next())
                 cards.add(new Card(reqSelection.getInt(1), reqSelection.getString(2), reqSelection.getInt(3),
@@ -38,7 +38,7 @@ public class CardDao {
                         reqSelection.getString(7), reqSelection.getString(8), reqSelection.getInt(9),
                         reqSelection.getInt(10)));
         } catch (Exception e) {
-            System.out.println("erreur req - select * from card where user_id = '" + user.getId() + "'");
+            System.out.println("erreur req - select * from Card where user_id = '" + user.getId() + "'");
             e.printStackTrace();
         }
         fermerConnexionBd();
@@ -46,11 +46,11 @@ public class CardDao {
     }
 
     public static int getLastId() {
-        ResultSet reqSelection = ConnectionDB.execReqSelection("select id from card order by id desc limit 1");
+        ResultSet reqSelection = ConnectionDB.execReqSelection("select id from Card order by id desc limit 1");
         try {
             if (reqSelection.next()) return reqSelection.getInt(1);
         } catch (Exception e) {
-            System.out.println("erreur req - select id from card order by id desc limit 1");
+            System.out.println("erreur req - select id from Card order by id desc limit 1");
             e.printStackTrace();
         }
         ConnectionDB.fermerConnexionBd();
@@ -58,9 +58,9 @@ public class CardDao {
     }
 
     public static void addCard(Card c) {
-        ConnectionDB.execReqMaj("insert into card values('" + c.getId() + "','" + c.getEnd() + "','" + c.getEstimated() + "','" +
+        ConnectionDB.execReqMaj("insert into Card values('" + c.getId() + "','" + c.getEnd() + "','" + c.getEstimated() + "','" +
                 c.getName() + "','" + c.getNote() + "','" + c.getPlace() + "','" + c.getType() + "','" + c.getUrl() + "','" +
-                c.getUser_id() + "','" + c.getKanban_id() + "')");
+                c.getKanban_id() + "','" + c.getUser_id() + "')");
         ConnectionDB.fermerConnexionBd();
     }
 }

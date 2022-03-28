@@ -13,7 +13,7 @@ public class ConnectionDB {
     }
 
     public static void connecterBd() {
-        String url = "jdbc:mysql://localhost:3306/sirtp2";
+        String url = "jdbc:mysql://localhost:3306/sir";
         try {
             cnx = DriverManager.getConnection(url, "root", "");
         } catch (Exception e) {
