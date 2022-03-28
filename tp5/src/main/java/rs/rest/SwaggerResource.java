@@ -23,7 +23,7 @@ public class SwaggerResource {
     @Path("{path:.*}")
     public byte[] Get(@PathParam("path") String path) {
         try {
-            return Files.readAllBytes(FileSystems.getDefault().getPath("src/main/webapp/swagger/"+path));
+            return Files.readAllBytes(FileSystems.getDefault().getPath("src/main/webapp/swagger/" + path));
         } catch (IOException e) {
             return null;
         }
