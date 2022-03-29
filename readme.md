@@ -8,7 +8,19 @@
 
 3. Lancer le TP5 :
 
-```Lancer la méthode Main de RestServer```
+Lancer le projet Quarkus
+
+```
+cd tp5-quarkus
+./mvnw compile quarkus:dev
+```
+
+Ou également, il est possible de lancer le TP5 originel
+
+```
+cd tp5
+Lancer la méthode Main de RestServer
+```
     
 - <a href="localhost:8080/api">localhost:8080/api<a/> pour voir toutes les routes
 
