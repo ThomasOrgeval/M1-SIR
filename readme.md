@@ -18,11 +18,14 @@ cd tp5-quarkus
 Ou également, il est possible de lancer le TP5 originel
 
 ```
-cd tp5
-Lancer la méthode Main de RestServer
+Lancer la méthode Main de RestServer 
+(Problème avec swagger, ouvrir le dossier TP5 dans l'IDE)
 ```
     
 - <a href="localhost:8080/api">localhost:8080/api<a/> pour voir toutes les routes
+
+
+# Have to finish 
 
 4. Lancer le TP6 :
 

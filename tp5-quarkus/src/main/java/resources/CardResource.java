@@ -20,7 +20,7 @@ public class CardResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Card> getCards() {
-        return cardDao.findAll();
+        return cardDao.findAllCards();
     }
 
 
@@ -28,6 +28,6 @@ public class CardResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Card getUserById(@PathParam("id") long id) {
-        return cardDao.findOne(id);
+        return cardDao.findOne(id).isPresent() ? cardDao.findOne(id).get() : null;
     }
 }
