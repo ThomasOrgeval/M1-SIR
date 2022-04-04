@@ -3,28 +3,20 @@ package model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@XmlRootElement(name = "User")
 public class User implements Serializable {
     @Id
     @GeneratedValue
-    @XmlElement(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
-    @XmlElementWrapper(name = "cards")
-    @XmlElement(name = "cards")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonBackReference
     List<Card> cards = new ArrayList<>();
 
-    @XmlElement(name = "name")
     String name;
 
     public User() {

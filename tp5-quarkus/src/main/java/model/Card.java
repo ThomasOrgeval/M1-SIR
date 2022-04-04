@@ -17,7 +17,7 @@ public class Card implements Serializable {
     @Enumerated(EnumType.STRING)
     private CardType type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private User user;
@@ -26,9 +26,8 @@ public class Card implements Serializable {
     @CollectionTable(name = "tags")
     private final List<String> tags = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "kanban_id")
-    @JsonManagedReference
     private Kanban kanban;
 
     private String name, place, url, note;

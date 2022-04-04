@@ -13,12 +13,11 @@ public class Kanban implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @OneToMany
-    @JoinColumn(name = "kanban_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "kanban")
     @JsonBackReference
     private final List<Card> cards = new ArrayList<>();
 
