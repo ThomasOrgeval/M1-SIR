@@ -1,6 +1,6 @@
 package model.dao;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Parameters;
 import io.quarkus.panache.common.Sort;
 import model.Kanban;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-public class KanbanDao implements PanacheRepositoryBase<Kanban, String> {
+public class KanbanDao implements PanacheRepository<Kanban> {
 
     public List<Kanban> findAllKanbans() {
         return this.listAll(Sort.descending("id"));

@@ -1,4 +1,4 @@
-package resources;
+package rest;
 
 import model.User;
 import model.dao.UserDao;

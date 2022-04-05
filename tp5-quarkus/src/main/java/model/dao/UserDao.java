@@ -1,6 +1,6 @@
 package model.dao;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Parameters;
 import io.quarkus.panache.common.Sort;
 import model.User;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @ApplicationScoped
-public class UserDao implements PanacheRepositoryBase<User, String> {
+public class UserDao implements PanacheRepository<User> {
 
     public List<User> findAllUsers() {
         return this.listAll(Sort.descending("id"));

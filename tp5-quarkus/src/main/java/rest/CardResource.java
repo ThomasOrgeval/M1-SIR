@@ -1,4 +1,4 @@
-package resources;
+package rest;
 
 import model.Card;
 import model.dao.CardDao;

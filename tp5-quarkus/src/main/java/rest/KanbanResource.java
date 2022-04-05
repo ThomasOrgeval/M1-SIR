@@ -1,4 +1,4 @@
-package resources;
+package rest;
 
 import model.Kanban;
 import model.dao.KanbanDao;
