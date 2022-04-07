@@ -4,6 +4,8 @@
 
 2. Lancer le TP2 :
 
+Afin d'insérer les premières données
+
 ```Lancer la méthode Main de JpaTest```
 
 3. Lancer le TP5 :

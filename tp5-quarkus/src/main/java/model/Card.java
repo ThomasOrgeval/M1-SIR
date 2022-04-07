@@ -1,5 +1,6 @@
 package model;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class Card {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonbTransient
     private User user;
 
     @ElementCollection
@@ -24,6 +26,7 @@ public class Card {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kanban_id")
+    @JsonbTransient
     private Kanban kanban;
 
     private String name;

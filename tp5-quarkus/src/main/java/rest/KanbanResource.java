@@ -18,14 +18,14 @@ public class KanbanResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Kanban> getUsers() {
+    public List<Kanban> getKanbans() {
         return kanbanDao.findAllKanbans();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Kanban getUserById(@PathParam("id") long id) {
+    public Kanban getKanbanById(@PathParam("id") long id) {
         return kanbanDao.findOne(id).isPresent() ? kanbanDao.findOne(id).get() : null;
     }
 }

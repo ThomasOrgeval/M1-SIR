@@ -27,7 +27,7 @@ public class CardResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Card getUserById(@PathParam("id") long id) {
+    public Card getCardById(@PathParam("id") long id) {
         return cardDao.findOne(id).isPresent() ? cardDao.findOne(id).get() : null;
     }
 }

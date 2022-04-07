@@ -1,0 +1,8 @@
+<h1 class="h3">Mes kanbans</h1>
+<ul class="list-group mt-3">
+  <li class="list-group-item d-flex justify-content-between clickable" *ngFor="let kanban of kanbans"
+      routerLink="/kanban/{{kanban.id}}" routerLinkActive="active">
+    <span>{{kanban.kanban}}</span>
+    <span class="text-muted">by: {{kanban.owner.name}}</span>
+  </li>
+</ul>
