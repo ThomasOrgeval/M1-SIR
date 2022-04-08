@@ -8,13 +8,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {HeaderComponent} from './components/navigation/header/header.component';
 import {FooterComponent} from './components/navigation/footer/footer.component';
 import {KanbanComponent} from './components/kanban/kanban.component';
-import { HomeComponent } from './components/home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HomeComponent} from './components/home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from "@angular/material/card";
-import { CardComponent } from './components/card/card.component';
+import {CardComponent} from './components/card/card.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
-import { LocalTimePipe } from './pipe/local-time.pipe';
+import {LocalTimePipe} from './pipe/local-time.pipe';
 
 @NgModule({
   declarations: [
