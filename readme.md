@@ -44,5 +44,6 @@ npm start
 
 ```
 cd tp10
+yarn install 
 npm start
 ```

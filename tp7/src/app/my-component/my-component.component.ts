@@ -13,7 +13,7 @@ export class MyComponentComponent implements OnInit {
   id: string = ''
   pokemon: string = ''
   pokemons: Pokemon[] = []
-  pokeDetail: PokeDetail
+  pokeDetail: PokeDetail | undefined
 
   constructor(private pokeService: PokeApiService,
               private pokeShareInfoService: PokeShareInfoService) {

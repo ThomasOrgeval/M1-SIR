@@ -1,21 +1,28 @@
-<h2 mat-dialog-title>{{card.name}}</h2>
+<h2 mat-dialog-title class="w-100">
+  <input matInput [(ngModel)]="card.name">
+</h2>
 <mat-dialog-content class="mat-typography">
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Description</mat-label>
-    <textarea matInput>{{card.note}}</textarea>
+    <textarea matInput [(ngModel)]="card.note"></textarea>
   </mat-form-field>
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Lieu</mat-label>
-    <input matInput [value]="card.place">
+    <input matInput [(ngModel)]="card.place">
   </mat-form-field>
 
   <mat-form-field appearance="standard" class="w-100">
-    <mat-label>Enter a date range</mat-label>
+    <mat-label>Temps estimé (en semaines)</mat-label>
+    <input matInput type="number" [(ngModel)]="card.estimated">
+  </mat-form-field>
+
+  <!--mat-form-field appearance="standard" class="w-100">
+    <mat-label>Entrer une rangée de date</mat-label>
     <mat-date-range-input [rangePicker]="rangePicker">
-      <input matStartDate placeholder="Start date">
-      <input matEndDate placeholder="End date">
+      <input matStartDate placeholder="Date de début">
+      <input matEndDate placeholder="Date de fin">
     </mat-date-range-input>
     <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
     <mat-date-range-picker #rangePicker>
@@ -24,10 +31,14 @@
         <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
       </mat-date-range-picker-actions>
     </mat-date-range-picker>
+  </mat-form-field-->
+
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Resource externe</mat-label>
+    <input matInput type="url" [(ngModel)]="card.url">
   </mat-form-field>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Update</button>
+  <button mat-button (click)="onNoClick()">Fermer</button>
 </mat-dialog-actions>
