@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Card} from "../../../../object";
 
@@ -10,10 +10,10 @@ import {Card} from "../../../../object";
 export class EditCardComponent {
 
   constructor(public dialogRef: MatDialogRef<EditCardComponent>,
-              @Inject(MAT_DIALOG_DATA) public card: Card) { }
+              @Inject(MAT_DIALOG_DATA) public card: Card) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

@@ -15,13 +15,15 @@ import {CardComponent} from './components/card/card.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
 import {LocalTimePipe} from './pipe/local-time.pipe';
-import { AddCardComponent } from './components/navigation/modal/add-card/add-card.component';
+import {AddCardComponent} from './components/navigation/modal/add-card/add-card.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
-import { EditCardComponent } from './components/navigation/modal/edit-card/edit-card.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EditCardComponent} from './components/navigation/modal/edit-card/edit-card.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -49,6 +51,10 @@ import { EditCardComponent } from './components/navigation/modal/edit-card/edit-
     MatDialogModule,
     MatButtonModule,
     FormsModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

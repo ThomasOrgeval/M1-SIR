@@ -37,25 +37,16 @@ export class KanbanComponent implements OnInit {
   }
 
   addCard(col: string): void {
-    const dialogRef = this.dialog.open(AddCardComponent, {
+    this.dialog.open(AddCardComponent, {
       width: '250px',
       data: col,
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    })
   }
 
   editCard(card: Card): void {
-    const dialogRef = this.dialog.open(EditCardComponent, {
+    this.dialog.open(EditCardComponent, {
       width: '250px',
       data: card,
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    })
-
   }
 }
