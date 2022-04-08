@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../../service/api.service";
-import {Kanban} from "../../object";
+import {Card, Kanban} from "../../object";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {AddCardComponent} from "../navigation/modal/add-card/add-card.component";
+import {EditCardComponent} from "../navigation/modal/edit-card/edit-card.component";
 
 @Component({
   selector: 'app-kanban',
@@ -15,13 +18,14 @@ export class KanbanComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private apiService: ApiService) {
+              private apiService: ApiService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')
     if (this.id === null) this.router.navigate(['/'])
-    
+
     this.apiService.getKanban(this.id!!).subscribe((data) => {
       if (!data) this.router.navigate(['/'])
       else this.kanban = new Kanban(data.id, data.kanban, data.cards, data.owner)
@@ -32,7 +36,26 @@ export class KanbanComponent implements OnInit {
     })
   }
 
-  addCard(col: string) {
+  addCard(col: string): void {
+    const dialogRef = this.dialog.open(AddCardComponent, {
+      width: '250px',
+      data: col,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    })
+  }
+
+  editCard(card: Card): void {
+    const dialogRef = this.dialog.open(EditCardComponent, {
+      width: '250px',
+      data: card,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    })
 
   }
 }
