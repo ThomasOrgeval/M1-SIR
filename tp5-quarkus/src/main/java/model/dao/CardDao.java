@@ -8,7 +8,9 @@ import model.Card;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
+import javax.ws.rs.NotFoundException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @ApplicationScoped
@@ -29,8 +31,18 @@ public class CardDao implements PanacheRepository<Card> {
     }
 
     @Transactional
-    public void save(Card card) {
+    public Long update(Card body, Long id) {
+        Card card = this.findById(id);
+        if(card == null) throw new NotFoundException();
+
+        card = body;
+        return card.getId();
+    }
+
+    @Transactional
+    public Long save(Card card) {
         this.persist(card);
+        return card.getId();
     }
 
     @Transactional

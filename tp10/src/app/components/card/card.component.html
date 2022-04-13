@@ -9,20 +9,22 @@
   </div>
   <hr class="mt-0 mb-2">
   <p *ngIf="card.note">{{card.note}}</p>
-  <div *ngIf="card.place" class="d-flex my-1">
-    <mat-icon aria-hidden="false" aria-label="Place icon">place</mat-icon>
-    <span class="ml-2 my-auto">{{card.place}}</span>
-  </div>
-  <div *ngIf="card.estimated" class="d-flex my-1">
-    <mat-icon aria-hidden="false" aria-label="Date_range icon">date_range</mat-icon>
-    <div class="ml-2 my-auto">{{card.estimated}} semaine<span *ngIf="card.estimated > 1">s</span> estimé</div>
-  </div>
-  <div *ngIf="card.end" class="d-flex my-1">
-    <mat-icon aria-hidden="false" aria-label="Schedule icon">schedule</mat-icon>
-    <span class="ml-2 my-auto">fini le {{card.end | localTime:'short'}}</span>
-  </div>
-  <div *ngIf="card.url" class="d-flex my-1">
-    <mat-icon aria-hidden="false" aria-label="Link icon">link</mat-icon>
-    <a class="ml-2 my-auto" href="{{card.url}}" target="_blank">link</a>
-  </div>
+  <ng-container *ngIf="card.type !== 'DONE'">
+    <div *ngIf="card.place" class="d-flex my-1">
+      <mat-icon aria-hidden="false" aria-label="Place icon">place</mat-icon>
+      <span class="ml-2 my-auto">{{card.place}}</span>
+    </div>
+    <div *ngIf="card.estimated" class="d-flex my-1">
+      <mat-icon aria-hidden="false" aria-label="Date_range icon">date_range</mat-icon>
+      <div class="ml-2 my-auto">{{card.estimated}} semaine<span *ngIf="card.estimated > 1">s</span></div>
+    </div>
+    <div *ngIf="card.end" class="d-flex my-1">
+      <mat-icon aria-hidden="false" aria-label="Schedule icon">schedule</mat-icon>
+      <span class="ml-2 my-auto">fini le {{card.end | localTime:'short'}}</span>
+    </div>
+    <div *ngIf="card.url" class="d-flex my-1">
+      <mat-icon aria-hidden="false" aria-label="Link icon">link</mat-icon>
+      <a class="ml-2 my-auto" href="{{card.url}}" target="_blank">link</a>
+    </div>
+  </ng-container>
 </mat-card>

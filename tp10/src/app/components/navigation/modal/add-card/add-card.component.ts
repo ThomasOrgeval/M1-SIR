@@ -12,6 +12,6 @@ export class AddCardComponent {
               @Inject(MAT_DIALOG_DATA) public col: string) { }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close()
   }
 }
