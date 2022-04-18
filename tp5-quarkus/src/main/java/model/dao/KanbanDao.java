@@ -14,20 +14,6 @@ import java.util.Optional;
 @ApplicationScoped
 public class KanbanDao implements PanacheRepository<Kanban> {
 
-    public List<Kanban> findAllKanbans() {
-        return this.listAll(Sort.descending("id"));
-    }
-
-    public Optional<Kanban> findOne(long id) {
-        Kanban kanban = null;
-        try {
-            kanban = this.find("id=:id", Parameters.with("id", id)).singleResult();
-        } catch (NoResultException e) {
-            e.printStackTrace();
-        }
-        return Optional.ofNullable(kanban);
-    }
-
     @Transactional
     public void save(Kanban kanban) {
         this.persist(kanban);

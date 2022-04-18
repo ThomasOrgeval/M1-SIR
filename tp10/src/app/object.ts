@@ -22,7 +22,7 @@ export interface KanbanRes {
 
 export class Card {
   constructor(
-    public id: number,
+    public id: number | null,
     public name: string,
     public type: string,
     public place: string,

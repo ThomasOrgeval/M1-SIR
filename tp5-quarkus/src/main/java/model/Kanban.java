@@ -20,15 +20,22 @@ public class Kanban {
     private String kanban;
 
     public Kanban() {
-
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public User getOwner() {
         return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public List<Card> getCards() {
@@ -37,6 +44,10 @@ public class Kanban {
 
     public String getKanban() {
         return kanban;
+    }
+
+    public void setKanban(String kanban) {
+        this.kanban = kanban;
     }
 
     public void addCard(Card card) {

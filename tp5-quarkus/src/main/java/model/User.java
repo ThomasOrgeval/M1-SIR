@@ -16,18 +16,29 @@ public class User {
     String name;
 
     public User() {
-
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public List<Card> getCards() {
         return cards;
     }
 
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

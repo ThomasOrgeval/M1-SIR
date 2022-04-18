@@ -17,14 +17,14 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
-        return userDao.findAllUsers();
+        return userDao.listAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserById(@PathParam("id") long id) {
-        return userDao.findOne(id).isPresent() ? userDao.findOne(id).get() : null;
+        return userDao.findById(id);
     }
 
     @POST

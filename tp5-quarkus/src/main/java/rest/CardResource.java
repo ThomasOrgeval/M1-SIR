@@ -18,13 +18,13 @@ public class CardResource {
 
     @GET
     public List<Card> getCards() {
-        return cardDao.findAllCards();
+        return cardDao.listAll();
     }
 
     @GET
     @Path("/{id}")
     public Card getCardById(@PathParam("id") long id) {
-        return cardDao.findOne(id).isPresent() ? cardDao.findOne(id).get() : null;
+        return cardDao.findById(id);
     }
 
     @PUT

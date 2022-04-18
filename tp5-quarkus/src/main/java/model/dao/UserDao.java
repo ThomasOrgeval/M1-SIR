@@ -14,20 +14,6 @@ import java.util.Optional;
 @ApplicationScoped
 public class UserDao implements PanacheRepository<User> {
 
-    public List<User> findAllUsers() {
-        return this.listAll(Sort.descending("id"));
-    }
-
-    public Optional<User> findOne(long id) {
-        User user = null;
-        try {
-            user = this.find("id=:id", Parameters.with("id", id)).singleResult();
-        } catch (NoResultException e) {
-            e.printStackTrace();
-        }
-        return Optional.ofNullable(user);
-    }
-
     @Transactional
     public void save(User user) {
         this.persist(user);

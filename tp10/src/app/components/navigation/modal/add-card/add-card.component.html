@@ -1,12 +1,42 @@
-<h1 mat-dialog-title>Hi {{col}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="col">
+<h1 mat-dialog-title>{{col}}</h1>
+<mat-dialog-content class="mat-typography">
+
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Description</mat-label>
+    <textarea matInput></textarea>
   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="col" cdkFocusInitial>Ok</button>
-</div>
+
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Lieu</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Temps estimé (en semaines)</mat-label>
+    <input matInput type="number">
+  </mat-form-field>
+
+  <!--mat-form-field appearance="standard" class="w-100">
+    <mat-label>Entrer une rangée de date</mat-label>
+    <mat-date-range-input [rangePicker]="rangePicker">
+      <input matStartDate placeholder="Date de début">
+      <input matEndDate placeholder="Date de fin">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #rangePicker>
+      <mat-date-range-picker-actions>
+        <button mat-button matDateRangePickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
+      </mat-date-range-picker-actions>
+    </mat-date-range-picker>
+  </mat-form-field-->
+
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Ressource externe</mat-label>
+    <input matInput type="url">
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="save()">Save</button>
+</mat-dialog-actions>

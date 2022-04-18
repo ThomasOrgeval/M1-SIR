@@ -10,7 +10,6 @@
 
     <modules>
         <module>tp2</module>
-        <module>tp5</module>
         <module>tp5-quarkus</module>
     </modules>
 </project>
