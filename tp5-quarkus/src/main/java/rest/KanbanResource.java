@@ -1,7 +1,10 @@
 package rest;
 
+import entity.Card;
 import entity.Kanban;
+import repository.CardRepository;
 import repository.KanbanRepository;
+import repository.UserRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -15,6 +18,10 @@ import java.util.List;
 public class KanbanResource {
     @Inject
     KanbanRepository kanbanRepository;
+    @Inject
+    CardRepository cardRepository;
+    @Inject
+    UserRepository userRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -27,5 +34,12 @@ public class KanbanResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Kanban getKanbanById(@PathParam("id") long id) {
         return kanbanRepository.findById(id);
+    }
+
+    @GET
+    @Path("/cards/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Card> getCards(@PathParam("id") long id) {
+        return cardRepository.findByKanban(id);
     }
 }

@@ -9,15 +9,14 @@ export interface UserRes {
 }
 
 export class Kanban {
-  constructor(public id: number, public kanban: string, public cards: Card[], public owner: User) {
+  constructor(public id: number, public kanban: string, public cards: Card[] | null, public owner: User | null) {
   }
 }
 
 export interface KanbanRes {
   id: number
   kanban: string
-  cards: Card[]
-  owner: User
+  owner_id: number
 }
 
 export class Card {
@@ -30,7 +29,9 @@ export class Card {
     public note: string,
     public end: string,
     public estimated: number,
-    public tags: string[]
+    public tags: string[] | null,
+    public kanban_id: number | null,
+    public user_id: number | null
   ) {
   }
 }

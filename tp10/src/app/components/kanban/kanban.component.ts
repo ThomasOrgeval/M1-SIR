@@ -28,7 +28,13 @@ export class KanbanComponent implements OnInit {
 
     this.apiService.getKanban(this.id!!).subscribe((data) => {
       if (!data) this.router.navigate(['/'])
-      else this.kanban = new Kanban(data.id, data.kanban, data.cards, data.owner)
+      else {
+        this.apiService.getCardsKanban(this.id!!).subscribe((cards) => {
+          this.apiService.getUser(data.owner_id).subscribe((owner) => {
+            this.kanban = new Kanban(data.id, data.kanban, cards, owner)
+          })
+        })
+      }
     })
 
     this.apiService.getCardTypes().subscribe((data) => {
@@ -36,16 +42,16 @@ export class KanbanComponent implements OnInit {
     })
   }
 
-  addCard(col: string): void {
+  addCard(type: string, kanban: Kanban): void {
     this.dialog.open(AddCardComponent, {
-      width: '250px',
-      data: col,
+      width: '450px',
+      data: {type, kanban},
     });
   }
 
   editCard(card: Card): void {
     this.dialog.open(EditCardComponent, {
-      width: '250px',
+      width: '450px',
       data: card,
     });
   }

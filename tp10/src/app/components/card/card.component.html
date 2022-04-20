@@ -1,11 +1,13 @@
-<mat-card>
+<mat-card class="my-2">
   <div class="d-flex justify-content-between">
     <mat-card-title>{{card.name}}</mat-card-title>
-    <mat-card-subtitle *ngIf="card.tags.length > 0" class="mb-1">
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip *ngFor="let chip of card.tags" class="small" color="primary" selected>{{chip}}</mat-chip>
-      </mat-chip-list>
-    </mat-card-subtitle>
+    <ng-container *ngIf="card.tags !== null">
+      <mat-card-subtitle *ngIf="card.tags.length > 0" class="mb-1">
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip *ngFor="let chip of card.tags" class="small" color="primary" selected>{{chip}}</mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
+    </ng-container>
   </div>
   <hr class="mt-0 mb-2">
   <p *ngIf="card.note">{{card.note}}</p>
@@ -20,7 +22,7 @@
     </div>
     <div *ngIf="card.end" class="d-flex my-1">
       <mat-icon aria-hidden="false" aria-label="Schedule icon">schedule</mat-icon>
-      <span class="ml-2 my-auto">fini le {{card.end | localTime:'short'}}</span>
+      <span class="ml-2 my-auto">fini le {{card.end | localTime:'short_date'}}</span>
     </div>
     <div *ngIf="card.url" class="d-flex my-1">
       <mat-icon aria-hidden="false" aria-label="Link icon">link</mat-icon>

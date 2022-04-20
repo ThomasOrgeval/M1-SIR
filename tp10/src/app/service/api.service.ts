@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Card, CardRes, KanbanRes, UserRes} from "../object";
+import {Card, CardRes, KanbanRes, User, UserRes} from "../object";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,10 @@ export class ApiService {
 
   getCard(id: number): Observable<CardRes> {
     return this.http.get<CardRes>(this.card + id);
+  }
+
+  getCardsKanban(id: string): Observable<Card[]> {
+    return this.http.get<Card[]>(this.kanban + "cards/" + id);
   }
 
   setCard(card: Card): Observable<number> {

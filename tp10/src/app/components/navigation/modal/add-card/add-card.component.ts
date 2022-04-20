@@ -12,16 +12,25 @@ export class AddCardComponent {
 
   constructor(public dialogRef: MatDialogRef<AddCardComponent>,
               private apiService: ApiService,
-              @Inject(MAT_DIALOG_DATA) public col: string) {
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close()
+              @Inject(MAT_DIALOG_DATA) public obj: any) {
   }
 
   save(): void {
-    console.log(this.col)
-    let card: Card = new Card(null, "test", this.col, "Spain", "test url", "adaz", "2022-07-18 22:09:43.000000", 4, ["test", "tag2"])
+    console.log(this.obj)
+    let card: Card = new Card(
+      null,
+      "test",
+      this.obj.type,
+      "Spain",
+      "test url",
+      "adaz",
+      "2022-07-18",
+      4,
+      ["test", "tag2"],
+      this.obj.kanban.id,
+      null
+    )
+
     this.apiService.addCard(card).subscribe((id) => {
       console.log(id)
     })

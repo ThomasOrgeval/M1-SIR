@@ -2,14 +2,14 @@
   <h1 class="h3">{{kanban.kanban}}</h1>
   <div class="row">
     <div class="col overflow-auto mx-2 border" *ngFor="let status of cardTypes">
-      <h2 class="h5 text-center text-muted mt-3">{{status}}</h2>
+      <h2 class="h5 text-center text-muted mt-1">{{status}}</h2>
       <hr>
       <ng-container *ngFor="let card of kanban.cards">
         <app-card *ngIf="card.type === status" [card]="card" (click)="editCard(card)" class="clickable"></app-card>
       </ng-container>
       <hr>
       <div class="mb-2">
-        <a role="button" (click)="addCard(status)">
+        <a role="button" (click)="addCard(status, kanban)">
           Ajouter une carte
         </a>
       </div>
