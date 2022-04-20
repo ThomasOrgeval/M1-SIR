@@ -1,9 +1,8 @@
-package model;
+package entity;
 
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -11,29 +10,21 @@ public class Card {
     @Id
     @GeneratedValue
     private Long id;
+    private Long user_id;
+    private Long kanban_id;
 
     @Enumerated(EnumType.STRING)
     private CardType type;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonbTransient
-    private User user;
 
     @ElementCollection
     @CollectionTable(name = "tags")
     private final List<String> tags = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "kanban_id")
-    @JsonbTransient
-    private Kanban kanban;
-
     private String name;
     private String place;
     private String url;
     private String note;
-    private Date end;
+    private LocalDate end;
     private int estimated;
 
     public Card() {
@@ -91,11 +82,11 @@ public class Card {
         this.note = note;
     }
 
-    public Date getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 
@@ -107,19 +98,19 @@ public class Card {
         this.estimated = estimated;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public Kanban getKanban() {
-        return kanban;
+    public Long getKanban_id() {
+        return kanban_id;
     }
 
-    public void setKanban(Kanban kanban) {
-        this.kanban = kanban;
+    public void setKanban_id(Long kanban_id) {
+        this.kanban_id = kanban_id;
     }
 }

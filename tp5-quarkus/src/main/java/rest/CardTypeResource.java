@@ -1,6 +1,6 @@
 package rest;
 
-import model.CardType;
+import entity.CardType;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

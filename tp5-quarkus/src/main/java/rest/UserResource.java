@@ -1,7 +1,7 @@
 package rest;
 
-import model.User;
-import model.dao.UserDao;
+import entity.User;
+import repository.UserRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -12,19 +12,19 @@ import java.util.List;
 @Path("/user")
 public class UserResource {
     @Inject
-    UserDao userDao;
+    UserRepository userRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
-        return userDao.listAll();
+        return userRepository.listAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserById(@PathParam("id") long id) {
-        return userDao.findById(id);
+        return userRepository.findById(id);
     }
 
     @POST

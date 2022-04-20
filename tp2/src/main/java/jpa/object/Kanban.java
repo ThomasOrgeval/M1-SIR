@@ -25,6 +25,10 @@ public class Kanban {
         this.kanban = kanban;
     }
 
+    public Kanban() {
+
+    }
+
     public User getOwner() {
         return owner;
     }

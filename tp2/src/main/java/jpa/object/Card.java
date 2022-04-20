@@ -1,6 +1,7 @@
 package jpa.object;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -25,12 +26,15 @@ public class Card {
     private Kanban kanban;
 
     private String name, place, url, note;
-    private Date end;
+    private LocalDate end;
     private int estimated;
 
     public Card(CardType type, String name) {
         this.type = type;
         this.name = name;
+    }
+
+    public Card() {
     }
 
     public void setUser(User user) {
@@ -81,11 +85,11 @@ public class Card {
         this.note = note;
     }
 
-    public Date getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 

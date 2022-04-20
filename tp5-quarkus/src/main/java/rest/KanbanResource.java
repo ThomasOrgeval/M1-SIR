@@ -1,7 +1,7 @@
 package rest;
 
-import model.Kanban;
-import model.dao.KanbanDao;
+import entity.Kanban;
+import repository.KanbanRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -14,18 +14,18 @@ import java.util.List;
 @Path("/kanban")
 public class KanbanResource {
     @Inject
-    KanbanDao kanbanDao;
+    KanbanRepository kanbanRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Kanban> getKanbans() {
-        return kanbanDao.listAll();
+        return kanbanRepository.listAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Kanban getKanbanById(@PathParam("id") long id) {
-        return kanbanDao.findById(id);
+        return kanbanRepository.findById(id);
     }
 }

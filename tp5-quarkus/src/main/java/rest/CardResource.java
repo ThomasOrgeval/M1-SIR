@@ -1,7 +1,7 @@
 package rest;
 
-import model.Card;
-import model.dao.CardDao;
+import entity.Card;
+import repository.CardRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -14,35 +14,35 @@ import java.util.List;
 public class CardResource {
 
     @Inject
-    CardDao cardDao;
+    CardRepository cardRepository;
 
     @GET
     public List<Card> getCards() {
-        return cardDao.listAll();
+        return cardRepository.listAll();
     }
 
     @GET
     @Path("/{id}")
     public Card getCardById(@PathParam("id") long id) {
-        return cardDao.findById(id);
+        return cardRepository.findById(id);
     }
 
     @PUT
     @Path("/{id}")
     public Long updateCard(@PathParam("id") long id, Card card) {
-        return cardDao.update(card, id);
+        return cardRepository.update(card, id);
     }
 
     @POST
     public Long saveCard(Card card) {
-        return cardDao.save(card);
+        return cardRepository.save(card);
     }
 
 
     @DELETE
     @Path("/{id}")
     public void delete(@PathParam("id") long id) {
-        cardDao.deleteById(id);
+        cardRepository.deleteById(id);
         /*Card card = cardDao.findById(id);
         if(card == null) throw new NotFoundException();
         cardDao.delete(card);*/
