@@ -26,6 +26,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import { AddKanbanComponent } from './components/navigation/modal/add-kanban/add-kanban.component';
 import {MatSelectModule} from "@angular/material/select";
+import { AddUserComponent } from './components/navigation/modal/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatSelectModule} from "@angular/material/select";
     AddCardComponent,
     EditCardComponent,
     AddKanbanComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,

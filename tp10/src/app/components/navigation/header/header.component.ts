@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {AddKanbanComponent} from '../modal/add-kanban/add-kanban.component';
+import {AddUserComponent} from "../modal/add-user/add-user.component";
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,12 @@ export class HeaderComponent implements OnInit {
 
   addKanban() {
     this.dialog.open(AddKanbanComponent, {
+      width: '450px',
+    });
+  }
+
+  addUser() {
+    this.dialog.open(AddUserComponent, {
       width: '450px',
     });
   }

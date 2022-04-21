@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Kanban} from "../../object";
 import {ApiService} from "../../service/api.service";
 
@@ -10,15 +10,14 @@ import {ApiService} from "../../service/api.service";
 export class HomeComponent implements OnInit {
   kanbans: Kanban[] = []
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+  }
 
   ngOnInit(): void {
     this.apiService.getKanbans().subscribe((data) => {
       data.forEach((e) => {
-        this.apiService.getCardsKanban(e.id!!.toString()).subscribe((cards) => {
-          this.apiService.getUser(e.owner_id).subscribe((owner) => {
-            this.kanbans.push(new Kanban(e.id!!, e.kanban, cards, owner))
-          })
+        this.apiService.getUser(e.owner_id).subscribe((owner) => {
+          this.kanbans.push(new Kanban(e.id!!, e.kanban, null, owner))
         })
       })
     })

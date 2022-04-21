@@ -2,6 +2,7 @@ package repository;
 
 import entity.User;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.logging.Log;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -10,8 +11,10 @@ import javax.transaction.Transactional;
 public class UserRepository implements PanacheRepository<User> {
 
     @Transactional
-    public void save(User user) {
+    public Long save(User user) {
         this.persist(user);
+        Log.info("[User] nouveau user sauvegarde " + user.getId());
+        return user.getId();
     }
 
     @Transactional

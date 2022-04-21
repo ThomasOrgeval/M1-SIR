@@ -6,7 +6,6 @@ import repository.UserRepository;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/user")
@@ -28,7 +27,7 @@ public class UserResource {
     }
 
     @POST
-    public Response addUser(User user) {
-        return Response.ok().entity("SUCCESS").build();
+    public Long addUser(User user) {
+        return userRepository.save(user);
     }
 }

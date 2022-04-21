@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Nouveau utilisateur</h1>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Nom de l'utilisateur</mat-label>
+    <input matInput [(ngModel)]="user.name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="save()">Save</button>
+</mat-dialog-actions>

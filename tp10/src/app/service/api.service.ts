@@ -75,4 +75,8 @@ export class ApiService {
   getCardTypes(): Observable<string[]> {
     return this.http.get<string[]>(this.cardType);
   }
+
+  addUser(user: User): Observable<number> {
+    return this.http.post<number>(this.user, user);
+  }
 }
