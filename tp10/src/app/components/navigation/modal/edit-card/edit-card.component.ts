@@ -1,25 +1,46 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Card} from "../../../../object";
 import {ApiService} from "../../../../service/api.service";
+import {DateAdapter} from "@angular/material/core";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-edit-card',
   templateUrl: './edit-card.component.html',
   styleUrls: ['./edit-card.component.scss']
 })
-export class EditCardComponent {
+export class EditCardComponent implements OnInit {
+  cardTypes!: string[]
+  myForm !: FormGroup
 
-  constructor(public dialogRef: MatDialogRef<EditCardComponent>,
+  constructor(private _adapter: DateAdapter<any>,
+              public dialogRef: MatDialogRef<EditCardComponent>,
               private apiService: ApiService,
+              private fb: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public card: Card) {
   }
 
+  ngOnInit(): void {
+    this._adapter.setLocale('fr')
+
+    this.apiService.getCardTypes().subscribe((data) => {
+      this.cardTypes = data
+    })
+
+    this.myForm = this.fb.group({
+      end: [this.card.end, []],
+    })
+  }
+
   save(): void {
-    console.log(this.card)
-    this.apiService.setCard(this.card).subscribe((id) => {
-      console.log(id)
+    this.apiService.setCard(this.card).subscribe(() => {
     })
     this.dialogRef.close()
+  }
+
+  changeDatePicker(): any {
+    this.card.end = moment(this.myForm.value.end).format('YYYY-MM-DD');
   }
 }

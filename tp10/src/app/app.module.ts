@@ -14,7 +14,6 @@ import {MatCardModule} from "@angular/material/card";
 import {CardComponent} from './components/card/card.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatChipsModule} from "@angular/material/chips";
-import {LocalTimePipe} from './pipe/local-time.pipe';
 import {AddCardComponent} from './components/navigation/modal/add-card/add-card.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -36,7 +35,6 @@ import { AddUserComponent } from './components/navigation/modal/add-user/add-use
     KanbanComponent,
     HomeComponent,
     CardComponent,
-    LocalTimePipe,
     AddCardComponent,
     EditCardComponent,
     AddKanbanComponent,

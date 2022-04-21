@@ -3,6 +3,14 @@
 </h2>
 <mat-dialog-content class="mat-typography">
 
+  <span>Status de la carte</span>
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="card.type">
+      <mat-option *ngFor="let type of cardTypes" [value]="type">{{type}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Description</mat-label>
     <textarea matInput [(ngModel)]="card.note"></textarea>
@@ -18,20 +26,15 @@
     <input matInput type="number" [(ngModel)]="card.estimated">
   </mat-form-field>
 
-  <!--mat-form-field appearance="standard" class="w-100">
-    <mat-label>Entrer une rangée de date</mat-label>
-    <mat-date-range-input [rangePicker]="rangePicker">
-      <input matStartDate placeholder="Date de début">
-      <input matEndDate placeholder="Date de fin">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
-    <mat-date-range-picker #rangePicker>
-      <mat-date-range-picker-actions>
-        <button mat-button matDateRangePickerCancel>Cancel</button>
-        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-      </mat-date-range-picker-actions>
-    </mat-date-range-picker>
-  </mat-form-field-->
+  <form [formGroup]="myForm">
+    <mat-form-field appearance="standard" class="w-100">
+      <mat-label>Date de fin</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="changeDatePicker()" formControlName="end">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Ressource externe</mat-label>

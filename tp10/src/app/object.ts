@@ -30,7 +30,7 @@ export class Card {
     public place: string,
     public url: string,
     public note: string,
-    public end: string,
+    public end: Date | string,
     public estimated: number,
     public tags: string[] | null,
     public kanban_id: number | null,

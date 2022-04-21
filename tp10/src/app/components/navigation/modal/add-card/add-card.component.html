@@ -1,44 +1,44 @@
-<h1 mat-dialog-title>Nouvelle carte{{obj.type}}</h1>
+<h2 mat-dialog-title class="w-100">
+  <input matInput [(ngModel)]="card.name">
+</h2>
 <mat-dialog-content class="mat-typography">
 
   <mat-form-field appearance="standard" class="w-100">
-    <mat-label>Titre</mat-label>
-    <input matInput>
-  </mat-form-field>
-
-  <mat-form-field appearance="standard" class="w-100">
     <mat-label>Description</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput [(ngModel)]="card.note"></textarea>
   </mat-form-field>
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Lieu</mat-label>
-    <input matInput>
+    <input matInput [(ngModel)]="card.place">
   </mat-form-field>
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Temps estimé (en semaines)</mat-label>
-    <input matInput type="number">
+    <input matInput type="number" [(ngModel)]="card.estimated">
   </mat-form-field>
 
-  <!--mat-form-field appearance="standard" class="w-100">
-    <mat-label>Entrer une rangée de date</mat-label>
-    <mat-date-range-input [rangePicker]="rangePicker">
-      <input matStartDate placeholder="Date de début">
-      <input matEndDate placeholder="Date de fin">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
-    <mat-date-range-picker #rangePicker>
-      <mat-date-range-picker-actions>
-        <button mat-button matDateRangePickerCancel>Cancel</button>
-        <button mat-raised-button color="primary" matDateRangePickerApply>Apply</button>
-      </mat-date-range-picker-actions>
-    </mat-date-range-picker>
-  </mat-form-field-->
+  <form [formGroup]="myForm">
+    <mat-form-field appearance="standard" class="w-100">
+      <mat-label>Date de fin</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="changeDatePicker()" formControlName="end">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
 
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Ressource externe</mat-label>
-    <input matInput type="url">
+    <input matInput type="url" [(ngModel)]="card.url">
+  </mat-form-field>
+
+  <span>Utilisateur ayant crée cette carte</span>
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Utilisateur</mat-label>
+    <mat-select [(ngModel)]="card.user_id">
+      <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
 </mat-dialog-content>
