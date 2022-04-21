@@ -1,7 +1,8 @@
 package repository;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import entity.Kanban;
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.logging.Log;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -10,8 +11,10 @@ import javax.transaction.Transactional;
 public class KanbanRepository implements PanacheRepository<Kanban> {
 
     @Transactional
-    public void save(Kanban kanban) {
+    public Long save(Kanban kanban) {
         this.persist(kanban);
+        Log.info("[Kanban] nouveau kanban sauvegardee " + kanban.getId());
+        return kanban.getId();
     }
 
     @Transactional

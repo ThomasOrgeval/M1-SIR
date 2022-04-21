@@ -24,6 +24,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditCardComponent} from './components/navigation/modal/edit-card/edit-card.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { AddKanbanComponent } from './components/navigation/modal/add-kanban/add-kanban.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     LocalTimePipe,
     AddCardComponent,
     EditCardComponent,
+    AddKanbanComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatDatepickerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatSelectModule,
 
   ],
   providers: [],

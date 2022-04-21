@@ -21,12 +21,6 @@ public class CardResource {
         return cardRepository.listAll();
     }
 
-    @GET
-    @Path("/{id}")
-    public Card getCardById(@PathParam("id") long id) {
-        return cardRepository.findById(id);
-    }
-
     @PUT
     @Path("/{id}")
     public Long updateCard(@PathParam("id") long id, Card card) {

@@ -13,10 +13,13 @@ export class Kanban {
   }
 }
 
-export interface KanbanRes {
-  id: number
-  kanban: string
-  owner_id: number
+export class KanbanRes {
+  constructor(
+    public id: number | null,
+    public kanban: string,
+    public owner_id: number,
+  ) {
+  }
 }
 
 export class Card {

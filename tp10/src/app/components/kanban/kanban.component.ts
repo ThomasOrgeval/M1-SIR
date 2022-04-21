@@ -31,7 +31,7 @@ export class KanbanComponent implements OnInit {
       else {
         this.apiService.getCardsKanban(this.id!!).subscribe((cards) => {
           this.apiService.getUser(data.owner_id).subscribe((owner) => {
-            this.kanban = new Kanban(data.id, data.kanban, cards, owner)
+            this.kanban = new Kanban(data.id!!, data.kanban, cards, owner)
           })
         })
       }

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Nouveau kanban</h1>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Nom du kanban</mat-label>
+    <input matInput [(ngModel)]="kanban.kanban">
+  </mat-form-field>
+
+  <span>Utilisateur ayant crée ce kanban</span>
+  <mat-form-field appearance="standard" class="w-100">
+    <mat-label>Utilisateur</mat-label>
+    <mat-select [(value)]="kanban.owner_id">
+      <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="save()">Save</button>
+</mat-dialog-actions>

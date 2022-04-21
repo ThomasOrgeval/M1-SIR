@@ -16,7 +16,6 @@ export class AddCardComponent {
   }
 
   save(): void {
-    console.log(this.obj)
     let card: Card = new Card(
       null,
       "test",
@@ -31,9 +30,8 @@ export class AddCardComponent {
       null
     )
 
-    this.apiService.addCard(card).subscribe((id) => {
-      console.log(id)
-    })
+    this.apiService.addCard(card).subscribe(() => {})
     this.dialogRef.close()
+    window.location.reload()
   }
 }

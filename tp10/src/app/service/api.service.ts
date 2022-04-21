@@ -28,6 +28,10 @@ export class ApiService {
     return this.http.get<KanbanRes>(this.kanban + id);
   }
 
+  addKanban(kanban: KanbanRes): Observable<number> {
+    return this.http.post<number>(this.kanban, kanban);
+  }
+
   /**
    * CARDS
    */
@@ -60,7 +64,7 @@ export class ApiService {
    * USERS
    */
 
-  getUsers(): Observable<UserRes[]> {
+  getUsers(): Observable<User[]> {
     return this.http.get<UserRes[]>(this.user);
   }
 
