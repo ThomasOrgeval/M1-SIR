@@ -1,13 +1,11 @@
 package entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "card")
 public class Card {
     @Id
     @GeneratedValue
@@ -44,6 +42,22 @@ public class Card {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Kanban getKanban() {
+        return kanban;
+    }
+
+    public void setKanban(Kanban kanban) {
+        this.kanban = kanban;
     }
 
     public CardType getType() {
@@ -108,21 +122,5 @@ public class Card {
 
     public void setEstimated(int estimated) {
         this.estimated = estimated;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Kanban getKanban() {
-        return kanban;
-    }
-
-    public void setKanban(Kanban kanban) {
-        this.kanban = kanban;
     }
 }

@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>tp2</module>
         <module>tp5-quarkus</module>
     </modules>
 </project>

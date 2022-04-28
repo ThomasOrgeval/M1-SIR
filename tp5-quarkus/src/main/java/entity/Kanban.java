@@ -2,7 +2,7 @@ package entity;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "kanban")
 public class Kanban {
     @Id
     @GeneratedValue
