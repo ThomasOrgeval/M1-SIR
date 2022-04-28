@@ -2,10 +2,12 @@ package rest;
 
 import entity.Card;
 import entity.Kanban;
+import io.quarkus.logging.Log;
 import repository.CardRepository;
 import repository.KanbanRepository;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -43,7 +45,10 @@ public class KanbanResource {
 
     @DELETE
     @Path("/{id}")
+    @Transactional
     public void delete(@PathParam("id") long id) {
-
+        cardRepository.deleteByKanban(id);
+        kanbanRepository.deleteById(id);
+        Log.info("[Kanban] kanban supprime " + id);
     }
 }

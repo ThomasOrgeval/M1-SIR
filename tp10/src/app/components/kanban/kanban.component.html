@@ -1,5 +1,10 @@
 <div *ngIf="kanban != null">
-  <h1 class="h3">{{kanban.kanban}}</h1>
+  <div class="d-flex justify-content-between">
+    <h1 class="h3">{{kanban.kanban}}</h1>
+    <button mat-button (click)="deleteKanban()">
+      <mat-icon aria-hidden="false" aria-label="delete icon">delete</mat-icon>
+    </button>
+  </div>
   <div class="row">
     <div class="col overflow-auto mx-2 border" *ngFor="let status of cardTypes">
       <h2 class="h5 text-center text-muted mt-1">{{status}}</h2>

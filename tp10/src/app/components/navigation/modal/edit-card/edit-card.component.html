@@ -42,6 +42,7 @@
   </mat-form-field>
 
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<mat-dialog-actions class="d-flex justify-content-between">
+  <button mat-button (click)="delete()">Delete</button>
   <button mat-button (click)="save()">Save</button>
 </mat-dialog-actions>

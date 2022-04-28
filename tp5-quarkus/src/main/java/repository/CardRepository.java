@@ -14,7 +14,7 @@ public class CardRepository implements PanacheRepository<Card> {
 
     @Transactional
     public Long update(Card body, Long id) {
-        Card card = this.findById(id);
+        Card card = findById(id);
 
         if (card == null) throw new NotFoundException();
 
@@ -27,14 +27,14 @@ public class CardRepository implements PanacheRepository<Card> {
         card.setEnd(body.getEnd());
         card.setEstimated(body.getEstimated());
 
-        this.persist(card);
+        persist(card);
         Log.info("[Card] carte mise a jour " + card.getId());
         return card.getId();
     }
 
     @Transactional
     public Long save(Card card) {
-        this.persist(card);
+        persist(card);
         Log.info("[Card] nouvelle carte sauvegardee " + card.getId());
         return card.getId();
     }
@@ -42,5 +42,10 @@ public class CardRepository implements PanacheRepository<Card> {
     public List<Card> findByKanban(long kanban_id) {
         Log.info("[Card] reprises des cards provenant du kanban " + kanban_id);
         return find("kanban_id", kanban_id).list();
+    }
+
+    @Transactional
+    public void deleteByKanban(long kanban_id) {
+        delete("kanban_id", kanban_id);
     }
 }

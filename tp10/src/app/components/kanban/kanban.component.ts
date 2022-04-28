@@ -53,4 +53,10 @@ export class KanbanComponent implements OnInit {
       data: card,
     });
   }
+
+  deleteKanban() {
+    this.apiService.deleteKanban(this.kanban.id).subscribe(() => {
+    })
+    window.location.replace("")
+  }
 }

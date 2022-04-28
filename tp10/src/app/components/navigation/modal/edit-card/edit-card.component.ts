@@ -43,4 +43,11 @@ export class EditCardComponent implements OnInit {
   changeDatePicker(): any {
     this.card.end = moment(this.myForm.value.end).format('YYYY-MM-DD');
   }
+
+  delete() {
+    this.apiService.deleteCard(this.card.id!!).subscribe(() => {
+    })
+    this.dialogRef.close()
+    window.location.reload()
+  }
 }

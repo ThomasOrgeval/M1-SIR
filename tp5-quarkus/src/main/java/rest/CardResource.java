@@ -1,9 +1,11 @@
 package rest;
 
 import entity.Card;
+import io.quarkus.logging.Log;
 import repository.CardRepository;
 
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -35,10 +37,9 @@ public class CardResource {
 
     @DELETE
     @Path("/{id}")
+    @Transactional
     public void delete(@PathParam("id") long id) {
         cardRepository.deleteById(id);
-        /*Card card = cardDao.findById(id);
-        if(card == null) throw new NotFoundException();
-        cardDao.delete(card);*/
+        Log.info("[Card] carte supprimee " + id);
     }
 }

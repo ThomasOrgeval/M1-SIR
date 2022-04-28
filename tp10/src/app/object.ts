@@ -38,15 +38,3 @@ export class Card {
   ) {
   }
 }
-
-export interface CardRes {
-  id: number
-  name: string
-  type: string
-  place: string
-  url: string
-  note: string
-  end: string
-  estimated: number
-  tags: string[]
-}
