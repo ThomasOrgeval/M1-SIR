@@ -8,7 +8,7 @@
   <span>Utilisateur ayant crée ce kanban</span>
   <mat-form-field appearance="standard" class="w-100">
     <mat-label>Utilisateur</mat-label>
-    <mat-select #select [(value)]="kanban.owner_id">
+    <mat-select #select [(value)]="kanban.owner.id">
       <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
     </mat-select>
   </mat-form-field>

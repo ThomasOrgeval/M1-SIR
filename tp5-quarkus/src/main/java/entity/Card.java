@@ -1,5 +1,7 @@
 package entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,15 +12,21 @@ public class Card {
     @Id
     @GeneratedValue
     private Long id;
-    private Long user_id;
-    private Long kanban_id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "kanban_id")
+    private Kanban kanban;
 
     @Enumerated(EnumType.STRING)
     private CardType type;
 
     @ElementCollection
     @CollectionTable(name = "tags")
-    private final List<String> tags = new ArrayList<>();
+    private List<String> tags = new ArrayList<>();
 
     private String name;
     private String place;
@@ -48,6 +56,10 @@ public class Card {
 
     public List<String> getTags() {
         return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 
     public String getName() {
@@ -98,19 +110,19 @@ public class Card {
         this.estimated = estimated;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getKanban_id() {
-        return kanban_id;
+    public Kanban getKanban() {
+        return kanban;
     }
 
-    public void setKanban_id(Long kanban_id) {
-        this.kanban_id = kanban_id;
+    public void setKanban(Kanban kanban) {
+        this.kanban = kanban;
     }
 }

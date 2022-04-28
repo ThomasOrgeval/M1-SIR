@@ -30,9 +30,7 @@ export class KanbanComponent implements OnInit {
       if (!data) this.router.navigate(['/'])
       else {
         this.apiService.getCardsKanban(this.id!!).subscribe((cards) => {
-          this.apiService.getUser(data.owner_id).subscribe((owner) => {
-            this.kanban = new Kanban(data.id!!, data.kanban, cards, owner)
-          })
+            this.kanban = new Kanban(data.id!!, data.kanban, cards, data.owner)
         })
       }
     })

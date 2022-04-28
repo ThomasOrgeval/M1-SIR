@@ -1,15 +1,17 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Kanban {
     @Id
     @GeneratedValue
     private Long id;
-    private Long owner_id;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
+
     private String kanban;
 
     public Kanban() {
@@ -23,12 +25,12 @@ public class Kanban {
         this.id = id;
     }
 
-    public Long getOwner_id() {
-        return owner_id;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public String getKanban() {

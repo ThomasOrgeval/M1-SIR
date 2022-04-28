@@ -18,9 +18,17 @@ public class CardRepository implements PanacheRepository<Card> {
 
         if (card == null) throw new NotFoundException();
 
-        card = body;
+        card.setType(body.getType());
+        card.setTags(body.getTags());
+        card.setName(body.getName());
+        card.setPlace(body.getPlace());
+        card.setUrl(body.getUrl());
+        card.setNote(body.getNote());
+        card.setEnd(body.getEnd());
+        card.setEstimated(body.getEstimated());
+
+        this.persist(card);
         Log.info("[Card] carte mise a jour " + card.getId());
-        getEntityManager().persist(card);
         return card.getId();
     }
 

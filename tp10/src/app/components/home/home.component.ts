@@ -15,11 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getKanbans().subscribe((data) => {
-      data.forEach((e) => {
-        this.apiService.getUser(e.owner_id).subscribe((owner) => {
-          this.kanbans.push(new Kanban(e.id!!, e.kanban, null, owner))
-        })
-      })
+      this.kanbans = data
     })
   }
 
