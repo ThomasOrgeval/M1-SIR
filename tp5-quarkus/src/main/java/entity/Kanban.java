@@ -5,10 +5,11 @@ import javax.persistence.*;
 @Entity(name = "kanban")
 public class Kanban {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "kanbanSeq", sequenceName = "kanban_id_seq", allocationSize = 1, initialValue = 3)
+    @GeneratedValue(generator = "kanbanSeq")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User owner;
 

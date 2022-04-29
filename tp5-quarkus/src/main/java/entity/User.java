@@ -3,12 +3,13 @@ package entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.SequenceGenerator;
 
 @Entity(name = "user")
 public class User {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "userSeq", sequenceName = "user_id_seq", allocationSize = 1, initialValue = 3)
+    @GeneratedValue(generator = "userSeq")
     private Long id;
     String name;
 

@@ -12,7 +12,7 @@ public class KanbanRepository implements PanacheRepository<Kanban> {
 
     @Transactional
     public Long save(Kanban kanban) {
-        this.persist(kanban);
+        persist(kanban);
         Log.info("[Kanban] nouveau kanban sauvegarde " + kanban.getId());
         return kanban.getId();
     }

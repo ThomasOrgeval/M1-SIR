@@ -8,14 +8,15 @@ import java.util.List;
 @Entity(name = "card")
 public class Card {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "cardSeq", sequenceName = "card_id_seq", allocationSize = 1, initialValue = 7)
+    @GeneratedValue(generator = "cardSeq")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kanban_id")
     private Kanban kanban;
 
