@@ -33,8 +33,8 @@ export class Card {
     public end: Date | string,
     public estimated: number,
     public tags: string[] | null,
-    public kanban_id: number | null,
-    public user_id: number | null
+    public kanban: Kanban | null,
+    public user: User | null
   ) {
   }
 }

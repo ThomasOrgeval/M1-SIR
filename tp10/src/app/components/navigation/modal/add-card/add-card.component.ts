@@ -26,7 +26,7 @@ export class AddCardComponent implements OnInit {
     "2022-01-01",
     0,
     [],
-    this.obj.kanban.id,
+    this.obj.kanban,
     null
   )
 
@@ -54,6 +54,7 @@ export class AddCardComponent implements OnInit {
   }
 
   save(): void {
+    console.log(this.card)
     this.apiService.addCard(this.card).subscribe(() => {
     })
     this.dialogRef.close()
