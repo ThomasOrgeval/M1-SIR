@@ -8,10 +8,7 @@ public class Kanban {
     @SequenceGenerator(name = "kanbanSeq", sequenceName = "kanban_id_seq", allocationSize = 1, initialValue = 3)
     @GeneratedValue(generator = "kanbanSeq")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    private Long owner_id;
 
     private String kanban;
 
@@ -26,12 +23,12 @@ public class Kanban {
         this.id = id;
     }
 
-    public User getOwner() {
-        return owner;
+    public Long getOwner_id() {
+        return owner_id;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
     }
 
     public String getKanban() {

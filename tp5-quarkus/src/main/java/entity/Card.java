@@ -11,14 +11,8 @@ public class Card {
     @SequenceGenerator(name = "cardSeq", sequenceName = "card_id_seq", allocationSize = 1, initialValue = 7)
     @GeneratedValue(generator = "cardSeq")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "kanban_id")
-    private Kanban kanban;
+    private Long user_id;
+    private Long kanban_id;
 
     @Enumerated(EnumType.STRING)
     private CardType type;
@@ -45,20 +39,20 @@ public class Card {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
     }
 
-    public Kanban getKanban() {
-        return kanban;
+    public Long getKanban_id() {
+        return kanban_id;
     }
 
-    public void setKanban(Kanban kanban) {
-        this.kanban = kanban;
+    public void setKanban_id(Long kanban_id) {
+        this.kanban_id = kanban_id;
     }
 
     public CardType getType() {

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Card, Kanban, KanbanRes, User, UserRes} from "../object";
+import {Card, KanbanRes, User, UserRes} from "../object";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +20,8 @@ export class ApiService {
    * KANBANS
    */
 
-  getKanbans(): Observable<Kanban[]> {
-    return this.http.get<Kanban[]>(this.kanban);
+  getKanbans(): Observable<KanbanRes[]> {
+    return this.http.get<KanbanRes[]>(this.kanban);
   }
 
   getKanban(id: string): Observable<KanbanRes> {
@@ -62,6 +62,10 @@ export class ApiService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<UserRes[]>(this.user);
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.user}${id}`);
   }
 
   getCardTypes(): Observable<string[]> {

@@ -20,6 +20,3 @@ cd tp10
 yarn install 
 npm start
 ```
-
-BUG:
-- De temps en temps, il faut refaire plusieurs fois la même action pour que ça marche, je ne comprends pas pourquoi ça me le fait... (créer une carte, un user)

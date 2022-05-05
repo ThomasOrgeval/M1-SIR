@@ -12,7 +12,7 @@ import {MatSelect} from "@angular/material/select";
 export class AddKanbanComponent implements OnInit, AfterViewInit {
   users!: User[]
   user: number = 1
-  kanban: KanbanRes = new KanbanRes(null, "", new User(null, ""));
+  kanban: KanbanRes = new KanbanRes(null, "", this.user);
   @ViewChild('select') select!: MatSelect
 
   constructor(public dialogRef: MatDialogRef<AddKanbanComponent>,
